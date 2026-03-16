@@ -3,15 +3,11 @@
     padding:0;
     box-sizing:border-box;
 }
-
 body{
     min-height:100vh;
     font-family:"Poppins", sans-serif;
     background:linear-gradient(135deg,#6d82f3,#8b68cc);
 }
-
-/* LAYOUT PRINCIPAL */
-
 main{
     min-height:100vh;
     display:grid;
@@ -19,9 +15,6 @@ main{
     padding:20px;
     gap:20px;
 }
-
-/* PAINEL ESQUERDO */
-
 header{
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(10px);
@@ -31,30 +24,22 @@ header{
     flex-direction:column;
     justify-content:center;
 }
-
 header h1{
     font-size:4rem;
     line-height:1.05;
     margin-bottom:30px;
 }
-
 .subtitulo{
     font-size:1.1rem;
     line-height:1.7;
     color:rgba(0,0,0,0.7);
     max-width:260px;
 }
-
-/* COLUNA DIREITA */
-
 .container-direita{
     display:flex;
     flex-direction:column;
     gap:20px;
 }
-
-/* CADASTRO */
-
 #cadastramento{
     background:white;
     border-radius:25px;
@@ -67,13 +52,9 @@ header h1{
 
     transition:all .3s ease;
 }
-
 #cadastramento h1{
     font-size:2rem;
 }
-
-/* INPUTS */
-
 #inputnome,
 #inputemail,
 #inputidade{
@@ -84,7 +65,6 @@ header h1{
     background:#f6f6f6;
     font-size:1rem;
 }
-
 #cadastro{
     padding:16px;
     border:none;
@@ -94,9 +74,6 @@ header h1{
     font-weight:600;
     cursor:pointer;
 }
-
-/* MENSAGEM */
-
 #msg{
     display:none;
     padding:12px;
@@ -104,23 +81,17 @@ header h1{
     text-align:center;
     font-weight:600;
 }
-
 #msg.ativo{
     display:block;
 }
-
 #msg.sucesso{
     background:#e8fff1;
     color:#1e8449;
 }
-
 #msg.erro{
     background:#ffe7e7;
     color:#c0392b;
 }
-
-/* LISTA DE USUÁRIOS */
-
 #lista-usuarios{
     display:none;
     background:white;
@@ -130,41 +101,130 @@ header h1{
 
     transition:all .3s ease;
 }
-
 #lista-usuarios h2{
     margin-bottom:15px;
 }
-
-/* QUANDO EXISTIR USUÁRIO */
-
 #lista-usuarios.ativo{
     display:block;
 }
-
-/* quando lista aparecer, cadastro diminui */
-
 main:has(#lista-usuarios.ativo) #cadastramento{
     padding:20px;
 }
-
 main:has(#lista-usuarios.ativo) #cadastramento h1{
     font-size:1.6rem;
 }
-
-/* RESPONSIVO */
-
 @media(max-width:900px){
-
     main{
         grid-template-columns:1fr;
     }
-
     header{
         padding:30px;
     }
-
     header h1{
         font-size:3rem;
     }
+}
+main.escuro{
+    filter: brightness(0.5);
+    transition: 0.3s;
+}
+#edicao-registro{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 420px;
+    max-width: 90%;
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 1000;
+}
+#edicao-registro.ativo{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    display: block;
+}
+#edicao-registro h1{
+    font-size: 1.9rem;
+    margin-bottom: 6px;
+    color: #111;
+}
 
+#edicao-registro .subtitulo{
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 4px;
+}
+
+#editarnome,
+#editaremail,
+#editaridade{
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #d8d8d8;
+    background: #f6f6f6;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+#editarnome:focus,
+#editaremail:focus,
+#editaridade:focus{
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+    background: white;
+}
+
+#salvar,
+#cancelar{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#salvar{
+    background: linear-gradient(135deg, #667eea, #5566d6);
+    color: white;
+    margin-top: 8px;
+}
+#salvar:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(85, 102, 214, 0.25);
+}
+#cancelar{
+    background: #ececec;
+    color: #333;
+}
+#cancelar:hover{
+    background: #dddddd;
+}
+#recado{
+    display:none;
+    padding:12px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:600;
+}
+#recado.ativo{
+    display: block;
+}
+#recado.erro{
+    background:#ffe7e7;
+    color:#c0392b;
 }

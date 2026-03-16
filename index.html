@@ -11,11 +11,10 @@
 
 </head>
 <body>
-    
-    <main>
+    <main id="main">
         <header>
         <h1>Cadastro de Usuário</h1>
-        <p class="subtitulo">Projeto CRUD em desenvolvimento com JavaScript, CSS e LocalStorage.</p>
+        <p class="subtitulo">Projeto <abbr title="Create, Read, Update, Delete">CRUD</abbr> feito com JavaScript, HTML5 e CSS3</p>
     </header>
         <div id="container-direita">
             <section id="cadastramento">
@@ -35,9 +34,20 @@
             <section id="lista-usuarios">
                 <h2>Usuários cadastrados</h2>
                 <div id="usuarios-container"></div>
-            </section>
+            </section> 
         </div>
     </main>
+            <section id="edicao-registro">
+                <h1>Edição de cadastro</h1>
+                <p class="subtitulo">NOME NOVO:</p>
+                <input type="text" id="editarnome" placeholder="nome">
+                <p class="subtitulo">EMAIL NOVO:</p>
+                <input type="email" name="editaremail" id="editaremail" placeholder="@email">
+                <p class="subtitulo">IDADE NOVA:</p>
+                <input type="number" name="editaridade" id="editaridade" placeholder="Idade">
+                <input type="button" value="salvar" id="salvar">
+                <input type="button" value="cancelar" id="cancelar">
+            </section>
     <script src="js/script.js"></script>
 </body>
 </html>

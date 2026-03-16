@@ -11,23 +11,32 @@
 
 </head>
 <body>
-    <header>
+    
+    <main>
+        <header>
         <h1>Cadastro de Usuário</h1>
         <p class="subtitulo">Projeto CRUD em desenvolvimento com JavaScript, CSS e LocalStorage.</p>
     </header>
-    <main>
-        <section class="container" id="cadastramento">
-            <input type="text" id="inputnome" placeholder="nome">
-            <input type="email" name="inputemail" id="inputemail" placeholder="@email">
-            <input type="number" name="inputidade" id="inputidade" placeholder="Idade">
-            <input type="button" value="Cadastrar" id="cadastro">
-        </section>
-        <section id="mensagens">
-            <div id="msg"></div>
-        </section>
-        <section class="container" id="lista-usuarios">
-            <h2>Usuários cadastrados</h2>
-        </section>
+        <div id="container-direita">
+            <section id="cadastramento">
+                <h1>Cadastre-se agora!</h1>
+                <p class="subtitulo">NOME:</p>
+                <input type="text" id="inputnome" placeholder="nome">
+                <p class="subtitulo">EMAIL:</p>
+                <input type="email" name="inputemail" id="inputemail" placeholder="@email">
+                <p class="subtitulo">IDADE:</p>
+                <input type="number" name="inputidade" id="inputidade" placeholder="Idade">
+                <input type="button" value="Cadastrar" id="cadastro">
+            
+            <div id="mensagens">
+                <div id="msg"></div>
+            </div>
+            </section>
+            <section id="lista-usuarios">
+                <h2>Usuários cadastrados</h2>
+                <div id="usuarios-container"></div>
+            </section>
+        </div>
     </main>
     <script src="js/script.js"></script>
 </body>

@@ -1,5 +1,6 @@
 const botao = document.getElementById("cadastro")
-botao.addEventListener("click", cadastro)
+botao.addEventListener("click", cadastro) 
+
 let usuarios = JSON.parse(localStorage.getItem("cadastros")) || []
 function cadastro(){
     const inputnome = document.getElementById("inputnome")
@@ -17,8 +18,16 @@ function cadastro(){
         msg.textContent = '[ERRO] Insira dados válidos!'
         console.log("entrou no if")
         return
+   }else if(!email.includes("@")){
+          msg.classList.add("ativo", "erro")
+          msg.textContent = '[ERRO] Insira um email válido!'
+          return
+   } else if(idade > 100 || idade < 5){
+           msg.classList.add("ativo", "erro")
+          msg.textContent = "[ERRO] Insira uma Idade válida!"
+          return
    }
-   msg.classList.add("ativo", "sucesso")
+   msg.classList.add("sucesso", "ativo")
    msg.textContent = '[SUCESSO] Usuário cadastrado com sucesso!'
    usuarios.push({
     nome: nome,
@@ -27,5 +36,43 @@ function cadastro(){
    })
    localStorage.setItem("cadastros", JSON.stringify(usuarios))
    console.log(usuarios)
+   renderizarvalor()
+   inputnome.value = ""
+   inputidade.value = ""
+   inputemail.value = ""
+   inputnome.focus()
 }
 // fim da primeira sessão de código, 15/03 as 00:59
+function renderizarvalor(){
+     const listausuarios = document.getElementById("lista-usuarios")
+     const containerusuarios = document.querySelector("div#usuarios-container")
+     
+     containerusuarios.textContent = '' 
+     if (usuarios.length < 1){
+     listausuarios.classList.remove("ativo")
+     }else{
+          listausuarios.classList.add("ativo")
+     }
+     usuarios.forEach((registro, index) => {
+          let linha = document.createElement("div")
+          let texto = document.createElement("span")
+          let botaoEditar = document.createElement("button")
+          let botaoRemover = document.createElement("button")
+          linha.classList.add("usuario")
+          texto.textContent = `${registro.nome} - ${registro.email} - ${registro.idade}`
+          botaoEditar.textContent = 'Editar'
+          //botaoEditar.addEventListener("click", )
+          botaoRemover.textContent = 'Remover'
+          botaoRemover.addEventListener("click", () => Remover(index))
+          linha.appendChild(texto)
+          linha.appendChild(botaoEditar)
+          linha.appendChild(botaoRemover)
+          containerusuarios.appendChild(linha)
+          console.log("linha:", linha)
+     });
+}
+function Remover(index){
+     usuarios.splice(index, 1)
+     localStorage.setItem("cadastros", JSON.stringify(usuarios))
+     renderizarvalor()
+}

@@ -1,109 +1,170 @@
-body{
+*{
     margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    font-family: "Poppins", sans-serif;
+    padding:0;
+    box-sizing:border-box;
 }
-h1{
-    font-size: 2.2rem;
-    margin-bottom: 24px;
-    color: #111;
-    text-align: center;
-    margin-bottom: 24px;
+
+body{
+    min-height:100vh;
+    font-family:"Poppins", sans-serif;
+    background:linear-gradient(135deg,#6d82f3,#8b68cc);
 }
+
+/* LAYOUT PRINCIPAL */
+
 main{
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:40% 60%;
+    padding:20px;
+    gap:20px;
 }
+
+/* PAINEL ESQUERDO */
+
+header{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+header h1{
+    font-size:4rem;
+    line-height:1.05;
+    margin-bottom:30px;
+}
+
 .subtitulo{
-    color: #2f2f2f;
-    font-size: 1rem;
-    margin-top: -8px;
+    font-size:1.1rem;
+    line-height:1.7;
+    color:rgba(0,0,0,0.7);
+    max-width:260px;
 }
-.container{
-    background: rgba(255, 255, 255, 0.9);
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(8px);
+
+/* COLUNA DIREITA */
+
+.container-direita{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
+
+/* CADASTRO */
+
+#cadastramento{
+    background:white;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+    transition:all .3s ease;
+}
+
+#cadastramento h1{
+    font-size:2rem;
+}
+
+/* INPUTS */
+
 #inputnome,
 #inputemail,
 #inputidade{
-    padding: 14px 16px;
-    border-radius: 10px;
-    border: 1px solid #d8d8d8;
-    outline: none;
-    transition: 0.3s;
-    font-size: 1rem;
+    width:100%;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    background:#f6f6f6;
+    font-size:1rem;
 }
 
-#inputnome:focus,
-#inputemail:focus,
-#inputidade:focus{
-    border-color: #667eea;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
-}
 #cadastro{
-    padding: 14px 18px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #667eea, #5a67d8);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#667eea,#5566d6);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
 }
-#cadastro:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(102, 126, 234, 0.35);
-}
-#mensagens{
-    margin-top:20px;
-}
+
+/* MENSAGEM */
+
 #msg{
-    display: none;
-    margin-top: 18px;
-    padding: 14px 18px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    display:none;
+    padding:12px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:600;
 }
+
 #msg.ativo{
-    display: block;
+    display:block;
 }
-#msg.erro{
-    background: #ffe5e5;
-    color: #c0392b;
-    border: 1px solid #f5b7b1;
-}
+
 #msg.sucesso{
-    background: #e8fff1;
-    color: #1e8449;
-    border: 1px solid #a9dfbf;
+    background:#e8fff1;
+    color:#1e8449;
 }
-@media (max-width: 768px){
-    .container{
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    #inputnome,
-    #inputemail,
-    #inputidade,
-    #cadastro{
-        width: 100%;
-    }
-    h1{
-        font-size: 2.2rem;
-    }
+
+#msg.erro{
+    background:#ffe7e7;
+    color:#c0392b;
 }
+
+/* LISTA DE USUÁRIOS */
+
 #lista-usuarios{
-    display: none;
+    display:none;
+    background:white;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+    transition:all .3s ease;
+}
+
+#lista-usuarios h2{
+    margin-bottom:15px;
+}
+
+/* QUANDO EXISTIR USUÁRIO */
+
+#lista-usuarios.ativo{
+    display:block;
+}
+
+/* quando lista aparecer, cadastro diminui */
+
+main:has(#lista-usuarios.ativo) #cadastramento{
+    padding:20px;
+}
+
+main:has(#lista-usuarios.ativo) #cadastramento h1{
+    font-size:1.6rem;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    main{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        padding:30px;
+    }
+
+    header h1{
+        font-size:3rem;
+    }
+
 }

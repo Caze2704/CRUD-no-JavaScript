@@ -86,7 +86,7 @@ Durante o desenvolvimento foram praticados diversos conceitos importantes de Jav
 
 # 🌐 Deploy
 
-O projeto pode ser acessado online através da Vercel:
+O projeto pode ser acessado online através da Vercel: https://crud-no-java-script.vercel.app/
 
 ---
 
